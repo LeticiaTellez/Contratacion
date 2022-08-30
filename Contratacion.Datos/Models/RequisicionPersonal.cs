@@ -5,14 +5,13 @@ using System.Collections.Generic;
 
 namespace Contratacion.Datos.Models
 {
-    public partial class RequisicionPersonal
+    public partial class RequisicionPersonal : Base
     {
         public RequisicionPersonal()
         {
-            Vacantes = new HashSet<Vacante>();
+            Vacantes = new HashSet<Vacantes>();
         }
 
-        public int Id { get; set; }
         public DateTime FechaRequisicion { get; set; }
         public int IdJustificacionRequisicion { get; set; }
         public string DetalleJustificacion { get; set; }
@@ -36,12 +35,9 @@ namespace Contratacion.Datos.Models
         public int IdEstadoRequisicion { get; set; }
         public int IdPasoAutorizacion { get; set; }
         public bool? Cerrada { get; set; }
-        public bool? EstadoRequisicion { get; set; }
         public int IdUsuarioCreacion { get; set; }
-        public DateTime FechaCreacion { get; set; }
         public int? IdUsuarioModificacion { get; set; }
-        public DateTime? FechaModificacion { get; set; }
 
-        public virtual ICollection<Vacante> Vacantes { get; set; }
+        public virtual ICollection<Vacantes> Vacantes { get; set; }
     }
 }

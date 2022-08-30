@@ -1,5 +1,4 @@
-﻿using Contratacion.Datos.Seguridad;
-using Contratacion.Logica.Interfaces;
+﻿using Contratacion.Logica.Interfaces;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit.Text;
@@ -8,14 +7,15 @@ using System.Linq;
 using Contratacion.Modelos;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Contratacion.Datos;
 
 namespace Contratacion.Logica.Services
 {
     public class EmailService : IEmailService
     {
-        private readonly SeguridadDbContext _dbContext;
+        private readonly ContratacionDbContext _dbContext;
 
-        public EmailService(SeguridadDbContext dbContext)
+        public EmailService(ContratacionDbContext dbContext)
         {
             _dbContext = dbContext;
         }

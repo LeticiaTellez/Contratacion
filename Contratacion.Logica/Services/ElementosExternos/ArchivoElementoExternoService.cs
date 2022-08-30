@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Modelos;
@@ -23,14 +24,14 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         public List<ArchivoElementoExternoVM> ListarArchivos(int idEexterno)
         {
-            return _dbContext.ArchivoXExternos
-                             .Where(w => w.Activo == true && w.IdExpedienteNavigation.IdEexterno == idEexterno)
+            return _dbContext.ArchivosExterno
+                             .Where(w => w.Activo == true && w.Expediente.IdExterno == idEexterno)
                              .Select(s => new ArchivoElementoExternoVM
                              {
                                  Id = s.Id,
                                  IdExpediente = s.IdExpediente,
                                  IdTipoDocumento = s.IdTipoDocumento,
-                                 NombreTipoDocumento = s.IdTipoDocumentoNavigation.Nombre,
+                                 NombreTipoDocumento = s.DocumentosRequerido.Nombre,
                                  FechaRecepcion = s.FechaRecepcion,
                                  Observaciones = s.Observaciones,
                                  Ruta = s.Ruta
@@ -44,9 +45,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
                 request.IdExpediente = ObtenerIdExpediente(request.IdEexterno);
                 request.FechaRecepcion = DateTime.Now;
 
-                var entidad = _mapper.Map<ArchivoXExterno>(request);
+                var entidad = _mapper.Map<ArchivoExterno>(request);
 
-                _dbContext.ArchivoXExternos.Add(entidad);
+                _dbContext.ArchivosExterno.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -65,7 +66,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.ArchivoXExternos.Find(id);
+                var entidad = _dbContext.ArchivosExterno.Find(id);
                 if (entidad == null)
                 {
                     return new GeneralResponse
@@ -93,8 +94,8 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         int ObtenerIdExpediente(int idEexterno) 
         {
-            return _dbContext.ExpedienteTmps
-                .Where(w => w.IdEexterno == idEexterno && w.Activo == true)
+            return _dbContext.Expedientes
+                .Where(w => w.IdExterno == idEexterno && w.Activo == true)
                 .FirstOrDefault().Id;
         }
     }

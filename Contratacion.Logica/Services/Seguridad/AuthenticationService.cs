@@ -1,4 +1,4 @@
-﻿using Contratacion.Datos.Seguridad;
+﻿using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces;
 using Contratacion.Logica.Interfaces.Seguridad;
 using Contratacion.Modelos;

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.Vacantes;
 using Contratacion.Modelos;
@@ -38,7 +39,7 @@ namespace Contratacion.Logica.Services.Vacantes
                 entidad.AceptacionTerminos = true;
                 entidad.FechaCreacion = DateTime.Now;
 
-                _dbContext.AplicantesVacantes.Add(entidad);
+                _dbContext.AplicantesVacante.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -55,7 +56,7 @@ namespace Contratacion.Logica.Services.Vacantes
 
         private bool ExisteAplicacion(int idCandidato, int idVacante) 
         {
-            return _dbContext.AplicantesVacantes.Any(w => w.EstadoAplicacion == true
+            return _dbContext.AplicantesVacante.Any(w => w.Estado == true
                         && w.IdCandidato == idCandidato && w.IdVacante == idVacante);
         }
     }

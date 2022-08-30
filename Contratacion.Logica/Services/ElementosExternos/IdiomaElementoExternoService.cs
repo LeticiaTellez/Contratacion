@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Modelos;
@@ -23,9 +24,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         public List<IdiomaElementoExternoVM> ListarIdiomas(int idEexterno)
         {
-            return (from iee in _dbContext.IdiomasXEexternos
+            return (from iee in _dbContext.IdiomasExternos
                     join idio in _dbContext.Idiomas on iee.IdIdioma equals idio.Id
-                    where iee.Activo == true && idio.Estado == true && iee.IdEexterno == idEexterno
+                    where iee.Activo == true && idio.Estado == true && iee.IdExterno == idEexterno
                     select new IdiomaElementoExternoVM
                     {
                         Id = iee.Id,
@@ -36,7 +37,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
                         Leer = iee.Leer,
                         Hablar = iee.Hablar,
                         NombreIdioma = idio.Nombre,
-                        NombreCalificativo = iee.IdCalificativoNavigation.Nombre,
+                        NombreCalificativo = iee.Calificativo.Nombre,
                         Observaciones = iee.Observaciones
                     }).ToList();
         }
@@ -45,9 +46,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _mapper.Map<IdiomasXEexterno>(request);
+                var entidad = _mapper.Map<IdiomasExterno>(request);
 
-                _dbContext.IdiomasXEexternos.Add(entidad);
+                _dbContext.IdiomasExternos.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -66,7 +67,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.IdiomasXEexternos.Find(request.Id);
+                var entidad = _dbContext.IdiomasExternos.Find(request.Id);
                 if (entidad == null)
                 {
                     return new GeneralResponse
@@ -76,7 +77,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
                     };
                 }
 
-                _mapper.Map(request, entidad, typeof(IdiomaElementoExternoVM), typeof(IdiomasXEexterno));
+                _mapper.Map(request, entidad, typeof(IdiomaElementoExternoVM), typeof(IdiomasExterno));
                 _dbContext.Entry(entidad).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
@@ -96,7 +97,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.IdiomasXEexternos.Find(id);
+                var entidad = _dbContext.IdiomasExternos.Find(id);
                 if (entidad == null)
                 {
                     return new GeneralResponse

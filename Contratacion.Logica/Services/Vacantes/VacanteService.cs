@@ -1,6 +1,6 @@
-﻿using Contratacion.Datos.Models;
+﻿using Contratacion.Datos;
+using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.Vacantes;
-using Contratacion.Modelos;
 using Contratacion.Modelos.Vacantes;
 using System;
 using System.Collections.Generic;
@@ -20,11 +20,11 @@ namespace Contratacion.Logica.Services.Vacantes
         public List<VacanteVM> ListarVacantes()
         {
             return (from vac in _dbContext.Vacantes
-                    join rp in _dbContext.RequisicionPersonals on vac.IdRequisicion equals rp.Id
+                    join rp in _dbContext.RequisicionPersonal on vac.IdRequisicion equals rp.Id
                     join car in _dbContext.Cargos on rp.IdCargoSolicitado equals car.Id
                     join cat in _dbContext.Catalogos on rp.IdSucursalRequisicion equals cat.Id
                     join te in _dbContext.TiposEmpleados on rp.IdTipoContratacion equals te.Id
-                    where vac.EstadoVacante == true && vac.EsPublica == true && rp.Cerrada == false
+                    where vac.Estado == true && vac.EsPublica == true && rp.Cerrada == false
                     && rp.Autorizado == true && vac.FechaFinPublicacion >= DateTime.Now
                     select new VacanteVM
                     {
@@ -44,9 +44,9 @@ namespace Contratacion.Logica.Services.Vacantes
         public List<AreaResponse> ListarAreas()
         {
             var areas = (from vac in _dbContext.Vacantes
-                    join rp in _dbContext.RequisicionPersonals on vac.IdRequisicion equals rp.Id
+                    join rp in _dbContext.RequisicionPersonal on vac.IdRequisicion equals rp.Id
                     join area in _dbContext.Areas on rp.IdAreaRequisicion equals area.Id 
-                    where vac.EstadoVacante == true && vac.EsPublica == true
+                    where vac.Estado == true && vac.EsPublica == true
                     && rp.Autorizado == true && vac.FechaFinPublicacion >= DateTime.Now
                     select new AreaResponse
                     {

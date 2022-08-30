@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Modelos;
@@ -23,7 +24,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         public List<LocalidadElementoExternoVM> ListarLocalidades(int idEexterno)
         {
-            return _dbContext.LocalidadElementoExternos
+            return _dbContext.LocalidadExternos
                              .Where(w => w.EstaActivo == 1 && w.IdElementoExterno == idEexterno)
                              .Select(s => new LocalidadElementoExternoVM
                              {
@@ -31,9 +32,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
                                  IdPais = s.IdPais,
                                  IdDepartamento = s.IdDepartamento,
                                  IdMunicipio = s.IdMunicipio,
-                                 NombrePais = s.IdPaisNavigation.Nombre,
-                                 NombreDepartamento = s.IdDepartamentoNavigation.Nombre,
-                                 NombreMunicipio = s.IdMunicipioNavigation.Nombre
+                                 NombrePais = s.Pais.Nombre,
+                                 NombreDepartamento = s.Departamento.Nombre,
+                                 NombreMunicipio = s.Municipio.Nombre
                              }).ToList();
         }
 
@@ -41,9 +42,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _mapper.Map<LocalidadElementoExterno>(request);
+                var entidad = _mapper.Map<LocalidadExterno>(request);
 
-                _dbContext.LocalidadElementoExternos.Add(entidad);
+                _dbContext.LocalidadExternos.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -62,7 +63,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.LocalidadElementoExternos.Find(request.Id);
+                var entidad = _dbContext.LocalidadExternos.Find(request.Id);
                 if (entidad == null)
                 {
                     return new GeneralResponse
@@ -72,7 +73,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
                     };
                 }
 
-                _mapper.Map(request, entidad, typeof(LocalidadElementoExternoVM), typeof(LocalidadElementoExterno));
+                _mapper.Map(request, entidad, typeof(LocalidadElementoExternoVM), typeof(LocalidadExterno));
                 _dbContext.Entry(entidad).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
@@ -92,7 +93,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.LocalidadElementoExternos.Find(id);
+                var entidad = _dbContext.LocalidadExternos.Find(id);
                 if (entidad == null)
                 {
                     return new GeneralResponse

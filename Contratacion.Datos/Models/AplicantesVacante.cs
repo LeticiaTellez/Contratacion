@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 namespace Contratacion.Datos.Models
 {
-    public partial class AplicantesVacante
+    public partial class AplicantesVacante : Base
     {
-        public int Id { get; set; }
         public int IdVacante { get; set; }
         public int IdCandidato { get; set; }
         public bool? AceptacionTerminos { get; set; }
@@ -21,11 +20,8 @@ namespace Contratacion.Datos.Models
         public int? IdMotivoDescarte { get; set; }
         public DateTime? FechaDescarte { get; set; }
         public string ComentariosAplicante { get; set; }
-        public bool? EstadoAplicacion { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public DateTime? FechaModificacion { get; set; }
 
-        public virtual MotivosDescarte IdMotivoDescarteNavigation { get; set; }
-        public virtual Vacante IdVacanteNavigation { get; set; }
+        public virtual MotivosDescarte MotivoDescarte { get; set; }
+        public virtual Vacantes Vacante { get; set; }
     }
 }

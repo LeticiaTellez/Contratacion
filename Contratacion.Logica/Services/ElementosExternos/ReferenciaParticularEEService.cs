@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Modelos;
@@ -23,17 +24,17 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         public List<ReferenciaParticularEEVM> ListarRerenciasParticulares(int idEexterno)
         {
-            return _dbContext.ReferenciaParticularesEexternos
-                             .Where(w => w.Activo == true && w.IdEexterno == idEexterno)
+            return _dbContext.ReferenciasExterno
+                             .Where(w => w.Activo == true && w.IdExterno == idEexterno)
                              .Select(s => new ReferenciaParticularEEVM
                              {
                                  Id = s.Id,
-                                 IdEexterno = s.IdEexterno,
+                                 IdEexterno = s.IdExterno,
                                  IdRelacion = s.IdRelacion,
                                  IdTipoReferencia = s.IdTipoReferencia,
                                  NombreReferencia = s.NombreReferencia,
-                                 NombreTipoReferencia = s.IdTipoReferenciaNavigation.Nombre,
-                                 NombreRelacion = s.IdRelacionNavigation.Nombre,
+                                 NombreTipoReferencia = s.TipoReferencia.Nombre,
+                                 NombreRelacion = s.Relacion.Nombre,
                                  Direccion = s.Direccion,
                                  Ocupacion = s.Ocupacion,
                                  Telefono = s.Telefono
@@ -44,9 +45,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _mapper.Map<ReferenciaParticularesEexterno>(request);
+                var entidad = _mapper.Map<ReferenciasExterno>(request);
 
-                _dbContext.ReferenciaParticularesEexternos.Add(entidad);
+                _dbContext.ReferenciasExterno.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -65,7 +66,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.ReferenciaParticularesEexternos.Find(request.Id);
+                var entidad = _dbContext.ReferenciasExterno.Find(request.Id);
                 if (entidad == null)
                 {
                     return new GeneralResponse
@@ -75,7 +76,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
                     };
                 }
 
-                _mapper.Map(request, entidad, typeof(ReferenciaParticularEEVM), typeof(ReferenciaParticularesEexterno));
+                _mapper.Map(request, entidad, typeof(ReferenciaParticularEEVM), typeof(ReferenciasExterno));
                 _dbContext.Entry(entidad).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
@@ -95,7 +96,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.ReferenciaParticularesEexternos.Find(id);
+                var entidad = _dbContext.ReferenciasExterno.Find(id);
                 if (entidad == null)
                 {
                     return new GeneralResponse

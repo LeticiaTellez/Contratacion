@@ -29,9 +29,9 @@ namespace Contratacion.Datos.Models
         public double? SalarioHasta { get; set; }
         public int? IdTipoFuncionario { get; set; }
 
-        public virtual Catalogo IdCategoriaCargoNavigation { get; set; }
-        public virtual Catalogo IdNivelEscolaridadNavigation { get; set; }
-        public virtual Catalogo IdTipoFuncionarioNavigation { get; set; }
+        public virtual Catalogo CategoriaCargo { get; set; }
+        public virtual Catalogo NivelEscolaridad { get; set; }
+        public virtual Catalogo TipoFuncionario { get; set; }
         public virtual ICollection<ElementosExterno> ElementosExternos { get; set; }
     }
 }

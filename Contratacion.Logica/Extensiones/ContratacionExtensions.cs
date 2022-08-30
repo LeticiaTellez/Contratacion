@@ -1,4 +1,4 @@
-﻿using Contratacion.Datos.Models;
+﻿using Contratacion.Datos;
 using Contratacion.Logica.Interfaces;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Logica.Interfaces.Seguridad;

@@ -18,6 +18,6 @@ namespace Contratacion.Datos.Models
         public int? IdEmpresa { get; set; }
         public int? IdCentro { get; set; }
 
-        public virtual Catalogo IdTipoAreaNavigation { get; set; }
+        public virtual Catalogo TipoArea { get; set; }
     }
 }

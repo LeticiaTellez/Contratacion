@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.ElementosExternos;
 using Contratacion.Modelos;
@@ -23,14 +24,14 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         public List<EspecialidadElementoExternoVM> ListarEspecialidades(int idEexterno)
         {
-            return _dbContext.EspecialidadXEexternos
-                             .Where(w => w.Activo == true && w.IdEexterno == idEexterno)
+            return _dbContext.EspecialidadExternos
+                             .Where(w => w.Activo == true && w.IdExterno == idEexterno)
                              .Select(s => new EspecialidadElementoExternoVM
                              {
                                  Id = s.Id,
-                                 IdEexterno = s.IdEexterno,
+                                 IdEexterno = s.IdExterno,
                                  IdEspecialidad = s.IdEspecialidad,
-                                 NombreEspecialidad = s.IdEspecialidadNavigation.Descripcion,
+                                 NombreEspecialidad = s.Especialidad.Nombre,
                                  Comentario = s.Comentario
                              }).ToList();
         }
@@ -39,9 +40,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _mapper.Map<EspecialidadXEexterno>(request);
+                var entidad = _mapper.Map<EspecialidadExterno>(request);
 
-                _dbContext.EspecialidadXEexternos.Add(entidad);
+                _dbContext.EspecialidadExternos.Add(entidad);
                 _dbContext.SaveChanges();
 
                 return new GeneralResponse { Status = true };
@@ -60,7 +61,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.EspecialidadXEexternos.Find(request.Id);
+                var entidad = _dbContext.EspecialidadExternos.Find(request.Id);
                 if (entidad == null)
                 {
                     return new GeneralResponse
@@ -70,7 +71,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
                     };
                 }
 
-                _mapper.Map(request, entidad, typeof(EspecialidadElementoExternoVM), typeof(EspecialidadXEexterno));
+                _mapper.Map(request, entidad, typeof(EspecialidadElementoExternoVM), typeof(EspecialidadExterno));
                 _dbContext.Entry(entidad).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
@@ -90,7 +91,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
         {
             try
             {
-                var entidad = _dbContext.EspecialidadXEexternos.Find(id);
+                var entidad = _dbContext.EspecialidadExternos.Find(id);
                 if (entidad == null)
                 {
                     return new GeneralResponse

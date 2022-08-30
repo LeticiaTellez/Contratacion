@@ -9,16 +9,15 @@ namespace Contratacion.Datos.Models
     {
         public Especialidad()
         {
-            EspecialidadXEexternos = new HashSet<EspecialidadXEexterno>();
+            EspecialidadExternos = new HashSet<EspecialidadExterno>();
         }
 
         public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public string Especialidad1 { get; set; }
+        public string Nombre { get; set; }
         public int? IdEstudio { get; set; }
         public bool? Activo { get; set; }
 
-        public virtual Catalogo IdEstudioNavigation { get; set; }
-        public virtual ICollection<EspecialidadXEexterno> EspecialidadXEexternos { get; set; }
+        public virtual Catalogo Estudio { get; set; }
+        public virtual ICollection<EspecialidadExterno> EspecialidadExternos { get; set; }
     }
 }

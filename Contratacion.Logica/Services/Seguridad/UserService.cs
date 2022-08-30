@@ -1,5 +1,5 @@
-﻿using Contratacion.Datos.Models;
-using Contratacion.Datos.Seguridad;
+﻿using Contratacion.Datos;
+using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces.Seguridad;
 using Contratacion.Modelos;
 using Microsoft.EntityFrameworkCore;
@@ -11,10 +11,10 @@ namespace Contratacion.Logica.Services.Seguridad
 {
     public class UserService : IUserService
     {
-        private readonly SeguridadDbContext _dbContext;
+        private readonly ContratacionDbContext _dbContext;
         private readonly ContratacionDbContext _dbContContext;
 
-        public UserService(SeguridadDbContext dbContext, ContratacionDbContext dbContContext)
+        public UserService(Datos.ContratacionDbContext dbContext, ContratacionDbContext dbContContext)
         {
             _dbContext = dbContext;
             _dbContContext = dbContContext;
@@ -105,9 +105,9 @@ namespace Contratacion.Logica.Services.Seguridad
 
         public void UpdateEmailElementoExterno(long idUsuario, string correo) 
         {
-            int idElemento = _dbContContext.UsuariosXEexternos
+            int idElemento = _dbContContext.UsuariosExterno
                 .Where(w => w.IdUsuario == idUsuario)
-                .FirstOrDefault().IdEexterno;
+                .FirstOrDefault().IdExterno;
 
             var elemento = _dbContContext.ElementosExternos.Find(idElemento);
             elemento.CorreoElectronico = correo;

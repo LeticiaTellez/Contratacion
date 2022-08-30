@@ -14,29 +14,29 @@ namespace Contratacion.Logica.Profiles
             CreateMap<ElementosExterno, ElementoExternoRequest>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<ExperienciaXEexterno, ExperienciaElementoExternoVM>().ReverseMap()
+            CreateMap<ExperienciaExterno, ExperienciaElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<EstudiosXEexterno, EstudioElementoExternoVM>().ReverseMap()
+            CreateMap<EstudiosExterno, EstudioElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<EspecialidadXEexterno, EspecialidadElementoExternoVM>().ReverseMap()
+            CreateMap<EspecialidadExterno, EspecialidadElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<ReferenciaParticularesEexterno, ReferenciaParticularEEVM>().ReverseMap()
+            CreateMap<ReferenciasExterno, ReferenciaParticularEEVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<LocalidadElementoExterno, LocalidadElementoExternoVM>().ReverseMap()
+            CreateMap<LocalidadExterno, LocalidadElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.EstaActivo = 1);
 
-            CreateMap<IdiomasXEexterno, IdiomaElementoExternoVM>().ReverseMap()
+            CreateMap<IdiomasExterno, IdiomaElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<ArchivoXExterno, ArchivoElementoExternoVM>().ReverseMap()
+            CreateMap<ArchivoExterno, ArchivoElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
             CreateMap<AplicantesVacante, AplicanteVacanteVM>().ReverseMap()
-                .BeforeMap((s, d) => d.EstadoAplicacion = true);
+                .BeforeMap((s, d) => d.Estado = true);
         }
     }
 }

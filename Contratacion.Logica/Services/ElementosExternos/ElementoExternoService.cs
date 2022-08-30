@@ -1,4 +1,5 @@
 ﻿using System;
+using Contratacion.Datos;
 using Contratacion.Datos.Models;
 using Contratacion.Modelos;
 using Contratacion.Logica.Interfaces.ElementosExternos;
@@ -67,28 +68,28 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
         private void GuardarExpediente(int idElemento, string codigo) 
         {
-            ExpedienteTmp entidad = new ExpedienteTmp
+            Expediente entidad = new Expediente
             {
-                IdEexterno = idElemento,
+                IdExterno = idElemento,
                 Codigo = codigo,
                 Observaciones = "Ingreso Elemento Externo",
                 Activo = true
             };
 
-            _dbContext.ExpedienteTmps.Add(entidad);
+            _dbContext.Expedientes.Add(entidad);
             _dbContext.SaveChanges();
         }
 
         private void GuardarUsuarioElemento(int idElemento, int idUsuario)
         {
-            UsuariosXEexterno entidad = new UsuariosXEexterno
+            UsuariosExterno entidad = new UsuariosExterno
             {
                 IdUsuario = idUsuario,
-                IdEexterno = idElemento,
+                IdExterno = idElemento,
                 Activo = true
             };
 
-            _dbContext.UsuariosXEexternos.Add(entidad);
+            _dbContext.UsuariosExterno.Add(entidad);
             _dbContext.SaveChanges();
         }
 
@@ -138,25 +139,25 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
             var response = _mapper.Map<ElementoExternoResponse>(entidad);
 
-            response.NombreCargoAspirado = entidad.CargoAspiradoNavigation?.Nombre;
-            response.NombreEstadoCivil = entidad.EstadoCivilNavigation?.Nombre;
-            response.NombreLicenciaConducir = entidad.LicenciaConducirNavigation?.Nombre;
-            response.NombreNacionalidad = entidad.NacionalidadNavigation?.Nombre;
-            response.NombreRegionActual = entidad.IdRegionActualNavigation?.Nombre;
-            response.NombreRegionNatal = entidad.IdRegionNatalNavigation?.Nombre;
-            response.NombreSexo = entidad.SexoNavigation?.Nombre;
-            response.NombreTipoSangre = entidad.TipoSangreNavigation?.Nombre;
-            response.NombreUnidadEstatura = entidad.UnidadEstaturaNavigation?.Nombre;
-            response.NombreUnidadPeso = entidad.UnidadPesoNavigation?.Nombre;
+            response.NombreCargoAspirado = entidad.CargoAspirado?.Nombre;
+            response.NombreEstadoCivil = entidad.EstadoCivil?.Nombre;
+            response.NombreLicenciaConducir = entidad.LicenciaConducir?.Nombre;
+            response.NombreNacionalidad = entidad.Nacionalidad?.Nombre;
+            response.NombreRegionActual = entidad.RegionActual?.Nombre;
+            response.NombreRegionNatal = entidad.RegionNatal?.Nombre;
+            response.NombreSexo = entidad.Sexo?.Nombre;
+            response.NombreTipoSangre = entidad.TipoSangre?.Nombre;
+            response.NombreUnidadEstatura = entidad.UnidadEstatura?.Nombre;
+            response.NombreUnidadPeso = entidad.UnidadPeso?.Nombre;
 
             return response;
         }
 
         public int FindEExternoUsuario(int idUsuario) 
         {
-            return _dbContext.UsuariosXEexternos
+            return _dbContext.UsuariosExterno
                 .Where(w => w.IdUsuario == idUsuario)
-                .FirstOrDefault()?.IdEexterno ?? 0;
+                .FirstOrDefault()?.IdExterno ?? 0;
         }
     }
 }

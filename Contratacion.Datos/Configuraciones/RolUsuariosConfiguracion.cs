@@ -1,4 +1,4 @@
-﻿using Contratacion.Datos.Seguridad;
+﻿using Contratacion.Datos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

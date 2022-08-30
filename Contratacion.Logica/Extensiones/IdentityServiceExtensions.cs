@@ -1,4 +1,5 @@
-﻿using Contratacion.Datos.Seguridad;
+﻿using Contratacion.Datos;
+using Contratacion.Datos.Models;
 using Contratacion.Logica.Interfaces;
 using Contratacion.Logica.Interfaces.Seguridad;
 using Contratacion.Logica.Services;
@@ -23,11 +24,11 @@ namespace Contratacion.Logica.Extensiones
         {
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
-            services.AddDbContext<SeguridadDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ContratacionConnectionString"),
-                b => b.MigrationsAssembly(typeof(SeguridadDbContext).Assembly.FullName)));
+            services.AddDbContext<Datos.ContratacionDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ContratacionConnectionString"),
+                b => b.MigrationsAssembly(typeof(Datos.ContratacionDbContext).Assembly.FullName)));
 
             services.AddIdentity<Usuario, Rol>()
-                .AddEntityFrameworkStores<SeguridadDbContext>().AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<ContratacionDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IAuthenticationService, AuthenticationService>();
             services.AddTransient<IEmailService, EmailService>();

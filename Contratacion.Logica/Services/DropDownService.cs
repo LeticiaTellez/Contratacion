@@ -1,4 +1,4 @@
-﻿using Contratacion.Datos.Models;
+﻿using Contratacion.Datos;
 using Contratacion.Logica.Interfaces;
 using Contratacion.Modelos;
 using System.Collections.Generic;
@@ -41,10 +41,10 @@ namespace Contratacion.Logica.Services
 
         public List<DropDownResponse> cmbObtenerEspecialidades()
         {
-            return _dbContext.Especialidads
+            return _dbContext.Especialidades
                 .Where(w => w.Activo == true)
                 .Select(s => new DropDownResponse
-                { Id = s.Id, Text = s.Descripcion }).ToList();
+                { Id = s.Id, Text = s.Nombre }).ToList();
         }
 
         public List<DropDownResponse> cmbObtenerIdiomas()
@@ -57,7 +57,7 @@ namespace Contratacion.Logica.Services
 
         public List<DropDownResponse> cmbObtenerTiposDocumento()
         {
-            return _dbContext.CatalogosDocumentosRequeridos
+            return _dbContext.DocumentosRequerido
                 .Where(w => w.Estado == true)
                 .Select(s => new DropDownResponse
                 { Id = s.Id, Text = s.Nombre }).ToList();

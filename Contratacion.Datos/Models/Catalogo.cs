@@ -10,30 +10,30 @@ namespace Contratacion.Datos.Models
         public Catalogo()
         {
             Areas = new HashSet<Area>();
-            CargoIdCategoriaCargoNavigations = new HashSet<Cargo>();
-            CargoIdNivelEscolaridadNavigations = new HashSet<Cargo>();
-            CargoIdTipoFuncionarioNavigations = new HashSet<Cargo>();
-            ElementosExternoEstadoCivilNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoLicenciaConducirNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoNacionalidadNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoSexoNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoTipoSangreNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoUnidadEstaturaNavigations = new HashSet<ElementosExterno>();
-            ElementosExternoUnidadPesoNavigations = new HashSet<ElementosExterno>();
-            Especialidads = new HashSet<Especialidad>();
-            EstudiosXEexternoIdEstudioNavigations = new HashSet<EstudiosXEexterno>();
-            EstudiosXEexternoInstitutoNavigations = new HashSet<EstudiosXEexterno>();
-            ExperienciaXEexternos = new HashSet<ExperienciaXEexterno>();
-            IdiomasXEexternoEscribirNavigations = new HashSet<IdiomasXEexterno>();
-            IdiomasXEexternoEscucharNavigations = new HashSet<IdiomasXEexterno>();
-            IdiomasXEexternoHablarNavigations = new HashSet<IdiomasXEexterno>();
-            IdiomasXEexternoIdCalificativoNavigations = new HashSet<IdiomasXEexterno>();
-            IdiomasXEexternoLeerNavigations = new HashSet<IdiomasXEexterno>();
-            LocalidadElementoExternoIdDepartamentoNavigations = new HashSet<LocalidadElementoExterno>();
-            LocalidadElementoExternoIdMunicipioNavigations = new HashSet<LocalidadElementoExterno>();
-            LocalidadElementoExternoIdPaisNavigations = new HashSet<LocalidadElementoExterno>();
-            ReferenciaParticularesEexternoIdRelacionNavigations = new HashSet<ReferenciaParticularesEexterno>();
-            ReferenciaParticularesEexternoIdTipoReferenciaNavigations = new HashSet<ReferenciaParticularesEexterno>();
+            CargoIdCategoriaCargo = new HashSet<Cargo>();
+            CargoIdNivelEscolaridad = new HashSet<Cargo>();
+            CargoIdTipoFuncionario = new HashSet<Cargo>();
+            ElementosExternoEstadoCivil = new HashSet<ElementosExterno>();
+            ElementosExternoLicenciaConducir = new HashSet<ElementosExterno>();
+            ElementosExternoNacionalidad = new HashSet<ElementosExterno>();
+            ElementosExternoSexo = new HashSet<ElementosExterno>();
+            ElementosExternoTipoSangre = new HashSet<ElementosExterno>();
+            ElementosExternoUnidadEstatura = new HashSet<ElementosExterno>();
+            ElementosExternoUnidadPeso = new HashSet<ElementosExterno>();
+            Especialidades = new HashSet<Especialidad>();
+            EstudiosExternoIdEstudio = new HashSet<EstudiosExterno>();
+            EstudiosExternoInstituto = new HashSet<EstudiosExterno>();
+            ExperienciaExternos = new HashSet<ExperienciaExterno>();
+            IdiomasExternoEscribir = new HashSet<IdiomasExterno>();
+            IdiomasExternoEscuchar = new HashSet<IdiomasExterno>();
+            IdiomasExternoHablar = new HashSet<IdiomasExterno>();
+            IdiomasExternoIdCalificativo = new HashSet<IdiomasExterno>();
+            IdiomasExternoLeer = new HashSet<IdiomasExterno>();
+            LocalidadExternoIdDepartamento = new HashSet<LocalidadExterno>();
+            LocalidadExternoIdMunicipio = new HashSet<LocalidadExterno>();
+            LocalidadElementoExternoIdPais = new HashSet<LocalidadExterno>();
+            ReferenciasExternoIdRelacion = new HashSet<ReferenciasExterno>();
+            ReferenciasExternoIdTipoReferencia = new HashSet<ReferenciasExterno>();
         }
 
         public int Id { get; set; }
@@ -43,29 +43,29 @@ namespace Contratacion.Datos.Models
         public bool? Estado { get; set; }
 
         public virtual ICollection<Area> Areas { get; set; }
-        public virtual ICollection<Cargo> CargoIdCategoriaCargoNavigations { get; set; }
-        public virtual ICollection<Cargo> CargoIdNivelEscolaridadNavigations { get; set; }
-        public virtual ICollection<Cargo> CargoIdTipoFuncionarioNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoEstadoCivilNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoLicenciaConducirNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoNacionalidadNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoSexoNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoTipoSangreNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoUnidadEstaturaNavigations { get; set; }
-        public virtual ICollection<ElementosExterno> ElementosExternoUnidadPesoNavigations { get; set; }
-        public virtual ICollection<Especialidad> Especialidads { get; set; }
-        public virtual ICollection<EstudiosXEexterno> EstudiosXEexternoIdEstudioNavigations { get; set; }
-        public virtual ICollection<EstudiosXEexterno> EstudiosXEexternoInstitutoNavigations { get; set; }
-        public virtual ICollection<ExperienciaXEexterno> ExperienciaXEexternos { get; set; }
-        public virtual ICollection<IdiomasXEexterno> IdiomasXEexternoEscribirNavigations { get; set; }
-        public virtual ICollection<IdiomasXEexterno> IdiomasXEexternoEscucharNavigations { get; set; }
-        public virtual ICollection<IdiomasXEexterno> IdiomasXEexternoHablarNavigations { get; set; }
-        public virtual ICollection<IdiomasXEexterno> IdiomasXEexternoIdCalificativoNavigations { get; set; }
-        public virtual ICollection<IdiomasXEexterno> IdiomasXEexternoLeerNavigations { get; set; }
-        public virtual ICollection<LocalidadElementoExterno> LocalidadElementoExternoIdDepartamentoNavigations { get; set; }
-        public virtual ICollection<LocalidadElementoExterno> LocalidadElementoExternoIdMunicipioNavigations { get; set; }
-        public virtual ICollection<LocalidadElementoExterno> LocalidadElementoExternoIdPaisNavigations { get; set; }
-        public virtual ICollection<ReferenciaParticularesEexterno> ReferenciaParticularesEexternoIdRelacionNavigations { get; set; }
-        public virtual ICollection<ReferenciaParticularesEexterno> ReferenciaParticularesEexternoIdTipoReferenciaNavigations { get; set; }
+        public virtual ICollection<Cargo> CargoIdCategoriaCargo { get; set; }
+        public virtual ICollection<Cargo> CargoIdNivelEscolaridad { get; set; }
+        public virtual ICollection<Cargo> CargoIdTipoFuncionario { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoEstadoCivil { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoLicenciaConducir { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoNacionalidad { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoSexo { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoTipoSangre { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoUnidadEstatura { get; set; }
+        public virtual ICollection<ElementosExterno> ElementosExternoUnidadPeso { get; set; }
+        public virtual ICollection<Especialidad> Especialidades { get; set; }
+        public virtual ICollection<EstudiosExterno> EstudiosExternoIdEstudio { get; set; }
+        public virtual ICollection<EstudiosExterno> EstudiosExternoInstituto { get; set; }
+        public virtual ICollection<ExperienciaExterno> ExperienciaExternos { get; set; }
+        public virtual ICollection<IdiomasExterno> IdiomasExternoEscribir { get; set; }
+        public virtual ICollection<IdiomasExterno> IdiomasExternoEscuchar { get; set; }
+        public virtual ICollection<IdiomasExterno> IdiomasExternoHablar { get; set; }
+        public virtual ICollection<IdiomasExterno> IdiomasExternoIdCalificativo { get; set; }
+        public virtual ICollection<IdiomasExterno> IdiomasExternoLeer { get; set; }
+        public virtual ICollection<LocalidadExterno> LocalidadExternoIdDepartamento { get; set; }
+        public virtual ICollection<LocalidadExterno> LocalidadExternoIdMunicipio { get; set; }
+        public virtual ICollection<LocalidadExterno> LocalidadElementoExternoIdPais { get; set; }
+        public virtual ICollection<ReferenciasExterno> ReferenciasExternoIdRelacion { get; set; }
+        public virtual ICollection<ReferenciasExterno> ReferenciasExternoIdTipoReferencia { get; set; }
     }
 }
