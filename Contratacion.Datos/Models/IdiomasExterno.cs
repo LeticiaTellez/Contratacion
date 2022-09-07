@@ -18,11 +18,7 @@ namespace Contratacion.Datos.Models
         public int? Leer { get; set; }
         public int? IdCalificativo { get; set; }
 
-        public virtual Catalogo CatalogoEscribir { get; set; }
-        public virtual Catalogo CatalogoEscuchar { get; set; }
-        public virtual Catalogo CatalogoHablar { get; set; }
         public virtual Catalogo Calificativo { get; set; }
         public virtual ElementosExterno ElementoExterno { get; set; }
-        public virtual Catalogo CatalogoLeer { get; set; }
     }
 }

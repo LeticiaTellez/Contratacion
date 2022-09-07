@@ -10,7 +10,6 @@ namespace Contratacion.Datos.Models
         public Regiones()
         {
             ExternoRegionActual = new HashSet<ElementosExterno>();
-            ExternoRegionNatal = new HashSet<ElementosExterno>();
         }
 
         public int Id { get; set; }
@@ -24,6 +23,5 @@ namespace Contratacion.Datos.Models
         public bool? Seleccionado { get; set; }
 
         public virtual ICollection<ElementosExterno> ExternoRegionActual { get; set; }
-        public virtual ICollection<ElementosExterno> ExternoRegionNatal { get; set; }
     }
 }

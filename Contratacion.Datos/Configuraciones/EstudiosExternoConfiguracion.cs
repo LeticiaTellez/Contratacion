@@ -33,7 +33,7 @@ namespace Contratacion.Datos.Configuraciones
 
             entity.Property(e => e.IdEstudio).HasColumnName("id_estudio");
 
-            entity.Property(e => e.IdInstituto).HasColumnName("id_instituto");
+            entity.Property(e => e.Instituto).HasColumnName("instituto");
 
             entity.HasOne(d => d.Externo)
                 .WithMany(p => p.EstudiosExternos)
@@ -46,12 +46,6 @@ namespace Contratacion.Datos.Configuraciones
                 .HasForeignKey(d => d.IdEstudio)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("estudios_externo_estudio_fk");
-
-            entity.HasOne(d => d.Instituto)
-                .WithMany(p => p.EstudiosExternoInstituto)
-                .HasForeignKey(d => d.IdInstituto)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("estudios_externo_instituto_fk");
         }
     }
 }

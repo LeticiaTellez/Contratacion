@@ -27,7 +27,7 @@ namespace Contratacion.Datos.Configuraciones
                 .HasColumnName("observaciones");
 
             entity.HasOne(d => d.Externo)
-                .WithMany(p => p.ExpedienteTmps)
+                .WithMany(p => p.Expedientes)
                 .HasForeignKey(d => d.IdExterno)
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("expediente_externo_fk");

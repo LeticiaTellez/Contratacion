@@ -26,9 +26,6 @@ namespace Contratacion.Logica.Profiles
             CreateMap<ReferenciasExterno, ReferenciaParticularEEVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 
-            CreateMap<LocalidadExterno, LocalidadElementoExternoVM>().ReverseMap()
-                .BeforeMap((s, d) => d.EstaActivo = 1);
-
             CreateMap<IdiomasExterno, IdiomaElementoExternoVM>().ReverseMap()
                 .BeforeMap((s, d) => d.Activo = true);
 

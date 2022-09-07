@@ -29,12 +29,10 @@ namespace Contratacion.Logica.Services.ElementosExternos
                              .Select(s => new ReferenciaParticularEEVM
                              {
                                  Id = s.Id,
-                                 IdEexterno = s.IdExterno,
-                                 IdRelacion = s.IdRelacion,
+                                 IdExterno = s.IdExterno,
                                  IdTipoReferencia = s.IdTipoReferencia,
                                  NombreReferencia = s.NombreReferencia,
                                  NombreTipoReferencia = s.TipoReferencia.Nombre,
-                                 NombreRelacion = s.Relacion.Nombre,
                                  Direccion = s.Direccion,
                                  Ocupacion = s.Ocupacion,
                                  Telefono = s.Telefono

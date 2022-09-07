@@ -31,11 +31,10 @@ namespace Contratacion.Logica.Services.ElementosExternos
                                  Id = s.Id,
                                  IdEexterno = s.IdExterno,
                                  IdEstudio = s.IdEstudio,
-                                 Instituto = s.IdInstituto,
                                  FechaIncio = s.FechaIncio,
                                  FechaFin = s.FechaFin,
                                  NombreEstudio = s.Estudio.Nombre,
-                                 NombreInstituto = s.Instituto.Nombre,
+                                 NombreInstituto = s.Instituto,
                                  Comentario = s.Comentario,
                                  Completado = s.Completado
                              }).ToList();

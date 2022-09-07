@@ -11,7 +11,6 @@ namespace Contratacion.Modelos.ElementosExternos
         public int IdEstudio { get; set; }
         public string NombreEstudio { get; set; }
         [Required(ErrorMessage = "Campo Requerido")]
-        public int Instituto { get; set; }
         public string NombreInstituto { get; set; }
         public string Comentario { get; set; }
         public bool? Completado { get; set; }

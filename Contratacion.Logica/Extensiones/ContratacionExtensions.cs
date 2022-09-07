@@ -29,7 +29,6 @@ namespace Contratacion.Logica.Extensiones
             services.AddTransient<IEstudioElementoExternoService, EstudioElementoExternoService>();
             services.AddTransient<IEspecialidadElementoExternoService, EspecialidadElementoExternoService>();
             services.AddTransient<IReferenciaParticularEEService, ReferenciaParticularEEService>();
-            services.AddTransient<ILocalidadElementoExternoService, LocalidadElementoExternoService>();
             services.AddTransient<IIdiomaElementoExternoService, IdiomaElementoExternoService>();
             services.AddTransient<IArchivoElementoExternoService, ArchivoElementoExternoService>();
             services.AddTransient<IVacanteService, VacanteService>();

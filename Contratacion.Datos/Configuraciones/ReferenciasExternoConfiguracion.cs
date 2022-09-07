@@ -21,8 +21,6 @@ namespace Contratacion.Datos.Configuraciones
 
             entity.Property(e => e.IdExterno).HasColumnName("id_externo");
 
-            entity.Property(e => e.IdRelacion).HasColumnName("id_relacion");
-
             entity.Property(e => e.IdTipoReferencia).HasColumnName("id_tipo_referencia");
 
             entity.Property(e => e.NombreReferencia)
@@ -44,11 +42,6 @@ namespace Contratacion.Datos.Configuraciones
                 .WithMany(p => p.ReferenciaParticularesExternos)
                 .HasForeignKey(d => d.IdExterno)
                 .HasConstraintName("FK365BF1B97EA3FE11");
-
-            entity.HasOne(d => d.Relacion)
-                .WithMany(p => p.ReferenciasExternoIdRelacion)
-                .HasForeignKey(d => d.IdRelacion)
-                .HasConstraintName("FK365BF1B98535682D");
 
             entity.HasOne(d => d.TipoReferencia)
                 .WithMany(p => p.ReferenciasExternoIdTipoReferencia)

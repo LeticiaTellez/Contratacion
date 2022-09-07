@@ -15,10 +15,8 @@ namespace Contratacion.Datos.Models
         public int? IdTipoReferencia { get; set; }
         public bool? Activo { get; set; }
         public int? IdExterno { get; set; }
-        public int? IdRelacion { get; set; }
 
         public virtual ElementosExterno ElementoExterno { get; set; }
-        public virtual Catalogo Relacion { get; set; }
         public virtual Catalogo TipoReferencia { get; set; }
     }
 }

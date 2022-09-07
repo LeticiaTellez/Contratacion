@@ -1,4 +1,5 @@
-﻿using Contratacion.Datos.Models;
+﻿using Contratacion.Datos.Configuraciones;
+using Contratacion.Datos.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,6 @@ namespace Contratacion.Datos
         public DbSet<ExperienciaExterno> ExperienciaExternos { get; set; }
         public DbSet<Idioma> Idiomas { get; set; }
         public DbSet<IdiomasExterno> IdiomasExternos { get; set; }
-        public DbSet<LocalidadExterno> LocalidadExternos { get; set; }
         public DbSet<MotivosDescarte> MotivosDescartes { get; set; }
         public DbSet<ReferenciasExterno> ReferenciasExterno { get; set; }
         public DbSet<Regiones> Regiones { get; set; }

@@ -61,7 +61,7 @@ namespace Contratacion.Logica.Services.ElementosExternos
             lista = (request.Id > 0) ? lista.Where(w => w.Id != request.Id).ToList() : lista;
 
             return lista.Any(w => w.Identificacion.Replace("-","") == request.Identificacion.Replace("-", "")
-                    || w.Telefono1 == request.Telefono1
+                    || w.Telefono == request.Telefono
                     || w.CorreoElectronico == request.CorreoElectronico
                     || (!string.IsNullOrWhiteSpace(request.NoSeguroSocial) && w.NoSeguroSocial == request.NoSeguroSocial));
         }
@@ -141,14 +141,9 @@ namespace Contratacion.Logica.Services.ElementosExternos
 
             response.NombreCargoAspirado = entidad.CargoAspirado?.Nombre;
             response.NombreEstadoCivil = entidad.EstadoCivil?.Nombre;
-            response.NombreLicenciaConducir = entidad.LicenciaConducir?.Nombre;
-            response.NombreNacionalidad = entidad.Nacionalidad?.Nombre;
+            response.NombreNacionalidad = entidad.Nacionalidad;
             response.NombreRegionActual = entidad.RegionActual?.Nombre;
-            response.NombreRegionNatal = entidad.RegionNatal?.Nombre;
-            response.NombreSexo = entidad.Sexo?.Nombre;
-            response.NombreTipoSangre = entidad.TipoSangre?.Nombre;
-            response.NombreUnidadEstatura = entidad.UnidadEstatura?.Nombre;
-            response.NombreUnidadPeso = entidad.UnidadPeso?.Nombre;
+            response.NombreSexo = entidad.Sexo;
 
             return response;
         }

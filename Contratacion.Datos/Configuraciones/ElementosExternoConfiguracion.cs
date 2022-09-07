@@ -46,17 +46,13 @@ namespace Contratacion.Datos.Configuraciones
                 .IsUnicode(false)
                 .HasColumnName("direccion");
 
-            entity.Property(e => e.EstadoCivil).HasColumnName("estado_civil");
-
-            entity.Property(e => e.Estatura).HasColumnName("estatura");
+            entity.Property(e => e.IdEstadoCivil).HasColumnName("id_estado_civil");
 
             entity.Property(e => e.FechaNacimiento)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_nacimiento");
 
             entity.Property(e => e.IdRegionActual).HasColumnName("id_region_actual");
-
-            entity.Property(e => e.IdRegionNatal).HasColumnName("id_region_natal");
 
             entity.Property(e => e.Identificacion)
                 .IsRequired()
@@ -69,14 +65,9 @@ namespace Contratacion.Datos.Configuraciones
                 .IsUnicode(false)
                 .HasColumnName("imagen");
 
-            entity.Property(e => e.IdLicenciaConducir).HasColumnName("licencia_conducir");
-
-            entity.Property(e => e.Nacionalidad).HasColumnName("nacionalidad");
-
-            entity.Property(e => e.NoPasaporte)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("no_pasaporte");
+            entity.Property(e => e.Nacionalidad)
+                .HasMaxLength(150)
+                .HasColumnName("nacionalidad");
 
             entity.Property(e => e.NoSeguroSocial)
                 .HasMaxLength(255)
@@ -94,25 +85,14 @@ namespace Contratacion.Datos.Configuraciones
                 .IsUnicode(false)
                 .HasColumnName("num_licencia");
 
-            entity.Property(e => e.Peso).HasColumnName("peso");
+            entity.Property(e => e.Sexo)
+                .HasMaxLength(50)
+                .HasColumnName("sexo");
 
-            entity.Property(e => e.IdSexo).HasColumnName("sexo");
-
-            entity.Property(e => e.Telefono1)
+            entity.Property(e => e.Telefono)
                 .HasMaxLength(255)
                 .IsUnicode(false)
-                .HasColumnName("telefono1");
-
-            entity.Property(e => e.Telefono2)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("telefono2");
-
-            entity.Property(e => e.IdTipoSangre).HasColumnName("tipo_sangre");
-
-            entity.Property(e => e.IdUnidadEstatura).HasColumnName("unidad_estatura");
-
-            entity.Property(e => e.IdUnidadPeso).HasColumnName("unidad_peso");
+                .HasColumnName("telefono");
 
             entity.HasOne(d => d.CargoAspirado)
                 .WithMany(p => p.ElementosExternos)
@@ -121,49 +101,13 @@ namespace Contratacion.Datos.Configuraciones
 
             entity.HasOne(d => d.EstadoCivil)
                 .WithMany(p => p.ElementosExternoEstadoCivil)
-                .HasForeignKey(d => d.EstadoCivil)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasForeignKey(d => d.IdEstadoCivil)
                 .HasConstraintName("FKD082D50318F887B6");
 
             entity.HasOne(d => d.RegionActual)
                 .WithMany(p => p.ExternoRegionActual)
                 .HasForeignKey(d => d.IdRegionActual)
                 .HasConstraintName("FKD082D503889A34D8");
-
-            entity.HasOne(d => d.RegionNatal)
-                .WithMany(p => p.ExternoRegionNatal)
-                .HasForeignKey(d => d.IdRegionNatal)
-                .HasConstraintName("FKD082D503D1409068");
-
-            entity.HasOne(d => d.LicenciaConducir)
-                .WithMany(p => p.ElementosExternoLicenciaConducir)
-                .HasForeignKey(d => d.IdLicenciaConducir)
-                .HasConstraintName("FKD082D5038599DE68");
-
-            entity.HasOne(d => d.Nacionalidad)
-                .WithMany(p => p.ElementosExternoNacionalidad)
-                .HasForeignKey(d => d.Nacionalidad)
-                .HasConstraintName("FKD082D5039514ADFD");
-
-            entity.HasOne(d => d.Sexo)
-                .WithMany(p => p.ElementosExternoSexo)
-                .HasForeignKey(d => d.IdSexo)
-                .HasConstraintName("FKD082D503229C46A5");
-
-            entity.HasOne(d => d.TipoSangre)
-                .WithMany(p => p.ElementosExternoTipoSangre)
-                .HasForeignKey(d => d.IdTipoSangre)
-                .HasConstraintName("FKD082D5031FF1A641");
-
-            entity.HasOne(d => d.UnidadEstatura)
-                .WithMany(p => p.ElementosExternoUnidadEstatura)
-                .HasForeignKey(d => d.IdUnidadEstatura)
-                .HasConstraintName("FKD082D5037D9CEB0F");
-
-            entity.HasOne(d => d.UnidadPeso)
-                .WithMany(p => p.ElementosExternoUnidadPeso)
-                .HasForeignKey(d => d.IdUnidadPeso)
-                .HasConstraintName("FKD082D50345D20F95");
         }
     }
 }
